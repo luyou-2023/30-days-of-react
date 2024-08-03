@@ -1,3 +1,78 @@
+npm install -g live-server
+live-server
+
+理解 HTML 文件在 live-server 中如何运行 React 的过程，可以通过以下步骤进行解释：
+
+浏览器请求 HTML 文件：
+
+浏览器通过 live-server 请求 index.html 文件。
+浏览器加载 HTML 文件：
+
+浏览器接收到 index.html 文件并解析 HTML 结构。
+浏览器加载 React 和 Babel：
+
+浏览器按照 HTML 文件中的 <script> 标签依次加载 React、ReactDOM 和 Babel 的脚本。
+这些脚本被加载后，会在浏览器中提供 React 和 Babel 的功能。
+编译和执行 JSX：
+
+浏览器遇到 <script type="text/babel"> 标签时，Babel 会将其中的 JSX 代码实时编译为普通的 JavaScript 代码。
+编译后的 JavaScript 代码被执行，调用 ReactDOM.render 方法，将 React 组件渲染到指定的 DOM 节点中。
+下面是这个过程的图示：
+
+javascript
+复制代码
++---------------------------+
+| 1. 浏览器请求 HTML 文件 |
+| ----------------------> |
+| |
+| |
+| live-server |
++---------------------------+
+|
+v
++---------------------------+
+| 2. 浏览器加载 HTML 文件 |
+| |
+| <html> |
+| <head> |
+| <script src="react.js"></script> <--- 3. 加载 React 和 Babel
+| <script src="react-dom.js"></script>|
+| <script src="babel.js"></script> |
+| </head> |
+| <body> |
+| <div id="app"></div> |
+| <script type="text/babel"> |
+| ReactDOM.render(<h1>Hello world</h1>, document.querySelector("#app")); |
+| </script> |
+| </body> |
+| </html> |
++---------------------------+
+|
+v
++---------------------------+
+| 3. 浏览器加载 React 和 Babel 脚本 |
+| |
+| - React 和 ReactDOM 脚本被加载 |
+| - Babel 脚本被加载 |
++---------------------------+
+|
+v
++---------------------------+
+| 4. 编译和执行 JSX |
+| |
+| - Babel 编译 JSX 为 JavaScript |
+| - ReactDOM.render 被调用 |
+| - React 组件被渲染到 #app 节点 |
++---------------------------+
+通过这个图示，你可以看到 live-server 只是简单地提供静态文件，而浏览器负责加载、解析和执行 HTML 和 JavaScript 代码。React 和 Babel 的功能通过加载 CDN 脚本在浏览器中实现，最终实现 React 组件的渲染。
+
+npm init -y
+npm install react react-dom react-scripts --save-dev
+"scripts": {
+"start": "react-scripts start"
+},
+npm start
+
 ![](https://www.fullstackreact.com/assets/images/30days/30-days-of-react-header.jpg)
 
 <hr />
@@ -61,6 +136,7 @@ Since all of the days are built using the fantastic [create-react-app](https://g
 <!-- prettier-ignore -->
 | <a href='http://willcodeforfoo.com'><img src='https://avatars1.githubusercontent.com/u/529?v=4' width='140px;'/><h4 align='center'><a href='http://willcodeforfoo.com'>Ari</a></h4> | <a href='https://newline.co'><img src='https://avatars2.githubusercontent.com/u/4318?v=4' width='140px;'/><h4 align='center'><a href='https://newline.co'>Nate Murray</a></h4> | <a href='https://codepen.io/PeterHYChan/'><img src='https://avatars3.githubusercontent.com/u/32804449?v=4' width='140px;'/><h4 align='center'><a href='https://codepen.io/PeterHYChan/'>Peter Ho Yeung Chan</a></h4> | <a href='https://github.com/harms280'><img src='https://avatars2.githubusercontent.com/u/10542951?v=4' width='140px;'/><h4 align='center'><a href='https://github.com/harms280'>Aaron</a></h4> |
 | :---: | :---: | :---: | :---: |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ---
